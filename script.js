@@ -12,10 +12,12 @@ let nameInputContainer = document.getElementById('nameInput');
 let nameInput = document.getElementById('nameText');
 let nameSubmit = document.getElementById('nameSubmit');
 
+// change input width when a key is pressed
 nameInput.addEventListener('input', function() {
   this.style.width = this.value.length + 'ch';
 });
 
+// switch to input mode when city name is clicked
 nameDiv.addEventListener('click', function() {
   nameDiv.classList.toggle('hidden');
   nameInputContainer.style.display = 'flex';
@@ -23,6 +25,7 @@ nameDiv.addEventListener('click', function() {
   nameInput.style.width = '100px';
 });
 
+// refresh page when new city is submitted
 nameSubmit.addEventListener('click', function() {
   getWeatherData(nameInput.value);
   nameInput.value = '';
