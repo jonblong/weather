@@ -30,8 +30,14 @@ html {
 }
 
 #nameContainer {
+  margin-top: 15px;
   font-weight: 900;
   font-size: 96px;
+  cursor: pointer;
+}
+
+#nameInput {
+  margin-top: 15px;
 }
 
 #infoContainer {
@@ -66,4 +72,5 @@ html {
   align-items: center;
   justify-content: center;
   background-color: rgba(27, 27, 27, 0.65);
+  cursor: pointer;
 }

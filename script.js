@@ -1,4 +1,4 @@
-const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?q='
+const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 const WEATHER_KEY = 'a95c64fe40a9545d52fecb05db8ddea4'
 
 const IMG_URL = 'https://pixabay.com/api/?key=';
@@ -14,7 +14,7 @@ let nameSubmit = document.getElementById('nameSubmit');
 
 // change input width when a key is pressed
 nameInput.addEventListener('input', function() {
-  this.style.width = this.value.length + 'ch';
+  this.style.width = this.value.length + 1 + 'ch';
 });
 
 // switch to input mode when city name is clicked
@@ -37,8 +37,15 @@ async function getWeatherData(city) {
   // clear current data
   clearData();
 
+  // see if user input zip code or city name
+  let link = "";
+  if (city.charAt(0) <= '9' && city.charAt(0) >= '0') {
+    link = WEATHER_URL + 'zip=' + city + '&appid=' + WEATHER_KEY;
+  } else {
+    link = WEATHER_URL + 'q=' + city.replace(/\s+/g, '+') + '&appid=' + WEATHER_KEY;
+  }
+
   // get weather data as json object
-  let link = WEATHER_URL + city + '&appid=' + WEATHER_KEY;
   let response = await fetch(link, { mode: 'cors' });
   let weatherData = await response.json();
   console.log(weatherData);
